@@ -1,4 +1,4 @@
-package dev.evilasio.desafio_orla.service;
+package dev.evilasio.desafio_orla.service.funcionario;
 
 import org.springframework.data.domain.Page;
 

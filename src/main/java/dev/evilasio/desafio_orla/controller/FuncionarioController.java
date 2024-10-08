@@ -5,17 +5,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.evilasio.desafio_orla.model.dto.FuncionarioDto;
 import dev.evilasio.desafio_orla.model.form.CriarFuncionarioForm;
-import dev.evilasio.desafio_orla.service.FuncionarioService;
+import dev.evilasio.desafio_orla.service.funcionario.FuncionarioService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequestMapping("/funcionario")
+@RequiredArgsConstructor
 public class FuncionarioController {
 
-    private FuncionarioService funcionarioService;
+    private final FuncionarioService funcionarioService;
 
     @GetMapping
     public ResponseEntity<Page<FuncionarioDto>> buscarFuncionarios() {
