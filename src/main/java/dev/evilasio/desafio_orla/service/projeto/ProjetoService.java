@@ -11,4 +11,6 @@ public interface ProjetoService {
     public Projeto criarProjeto(CriarProjetoForm form);
 
     public Page<Projeto> buscarProjetos(Pageable pageable);
+
+    public Projeto buscarProjeto(Long id);
 }

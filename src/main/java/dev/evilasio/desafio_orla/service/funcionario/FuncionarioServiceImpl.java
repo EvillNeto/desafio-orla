@@ -31,5 +31,10 @@ public class FuncionarioServiceImpl  implements FuncionarioService{
     public Page<Funcionario> buscarFuncionarios(Pageable pageable) {
         return funcionarioRepository.findAll(pageable);
     }
+
+    @Override
+    public Funcionario buscarFuncionario(Long id) {
+        return funcionarioRepository.findById(id).orElseThrow(()->new RuntimeException("Funcionario não encontrado"));
+    }
     
 }

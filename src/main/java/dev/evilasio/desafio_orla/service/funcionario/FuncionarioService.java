@@ -11,4 +11,6 @@ public interface FuncionarioService {
     public Funcionario criarFuncionario(CriarFuncionarioForm form);
 
     public Page<Funcionario> buscarFuncionarios(Pageable pageable);
+
+    public Funcionario buscarFuncionario(Long id);
 }
