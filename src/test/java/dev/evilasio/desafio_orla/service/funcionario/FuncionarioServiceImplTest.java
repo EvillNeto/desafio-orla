@@ -32,19 +32,19 @@ class FuncionarioServiceImplTest {
     private FuncionarioServiceImpl underTest;
 
     @BeforeEach
-    void setup(){
-        underTest= new FuncionarioServiceImpl(repository);
+    void setup() {
+        underTest = new FuncionarioServiceImpl(repository);
     }
 
-    private Page<Funcionario> getPage(){
-        List<Funcionario>list = new ArrayList<>();
+    private Page<Funcionario> getPage() {
+        List<Funcionario> list = new ArrayList<>();
         Funcionario funcionario = Funcionario.builder().build();
         list.add(funcionario);
         return new PageImpl<>(list);
     }
 
     @Test
-    void testBuscarFuncionarios(){
+    void testBuscarFuncionarios() {
         // given
         Pageable pageable = Pageable.ofSize(1);
         // when
@@ -55,7 +55,7 @@ class FuncionarioServiceImplTest {
     }
 
     @Test
-    void shouldCallSave(){
+    void shouldCallSave() {
         // give
         CriarFuncionarioForm form = CriarFuncionarioForm.builder().build();
         // when
@@ -66,20 +66,22 @@ class FuncionarioServiceImplTest {
     }
 
     @Test
-    void shouldThrowBeforeSave(){
-         // give
-         CriarFuncionarioForm form = CriarFuncionarioForm.builder().build();
-         // when
-         Mockito.doReturn(Optional.of(Funcionario.builder().build())).when(repository).findByCpf(any());
+    void shouldThrowBeforeSave() {
+        // give
+        CriarFuncionarioForm form = CriarFuncionarioForm.builder().build();
+        // when
+        Mockito.doReturn(Optional.of(Funcionario.builder().build())).when(repository).findByCpf(any());
         // then
-        assertThatThrownBy(() -> underTest.criarFuncionario(form)).hasMessageContaining("Funcionario ja cadastrado com esse cpf");
+        assertThatThrownBy(() -> underTest.criarFuncionario(form))
+                .hasMessageContaining("Funcionario ja cadastrado com esse cpf");
     }
 
     @Test
-    void shouldThrowNotFindingById(){
+    void shouldThrowNotFindingById() {
         // when
         Mockito.doReturn(Optional.empty()).when(repository).findById(anyLong());
         // then
-        assertThatThrownBy(() -> underTest.buscarFuncionario(anyLong())).hasMessageContaining("Funcionario não encontrado");
+        assertThatThrownBy(() -> underTest.buscarFuncionario(anyLong()))
+                .hasMessageContaining("Funcionario não encontrado");
     }
 }
