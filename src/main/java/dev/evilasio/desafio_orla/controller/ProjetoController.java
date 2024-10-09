@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.evilasio.desafio_orla.model.dto.ProjetoDto;
 import dev.evilasio.desafio_orla.model.form.CriarProjetoForm;
 import dev.evilasio.desafio_orla.service.projeto.ProjetoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -37,7 +38,7 @@ public class ProjetoController {
     }
 
     @PostMapping
-    public ResponseEntity<ProjetoDto> criarProjeto(@RequestBody CriarProjetoForm form) {
+    public ResponseEntity<ProjetoDto> criarProjeto(@RequestBody @Valid CriarProjetoForm form) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ProjetoDto.toDto(projetoService.criarProjeto(form)));
     }

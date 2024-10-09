@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.evilasio.desafio_orla.model.dto.FuncionarioDto;
 import dev.evilasio.desafio_orla.model.form.CriarFuncionarioForm;
 import dev.evilasio.desafio_orla.service.funcionario.FuncionarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -37,7 +38,7 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioDto> criarFuncionario(@RequestBody CriarFuncionarioForm form) {
+    public ResponseEntity<FuncionarioDto> criarFuncionario(@RequestBody @Valid CriarFuncionarioForm form) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(FuncionarioDto.toDto(funcionarioService.criarFuncionario(form)));
     }
