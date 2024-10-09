@@ -10,6 +10,7 @@ Projeto tem a gestão de funcionarios e projetos em mente
 ### :rocket: Setup
 - Para rodar o projeto é preciso ter o maven instalado
 - A api vem com todas as configurações prontas para a porta 8080
+- O banco vem confugurado para a porta 5433 e pode ser acessado pela url jdbc:postgresql://0.0.0.0:5433/desafio
 - a aplicação ira rodar os containers do docker automaticamente
 - Rodar o projeto pode ser feito pela sua IDE de preferencia ou atraves do terminal caso sua maquina tenha maven instalado lançando o comando a seguir no root do projeto
 
