@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import dev.evilasio.desafio_orla.exception.StandardException;
 import dev.evilasio.desafio_orla.model.entity.Funcionario;
 import dev.evilasio.desafio_orla.model.entity.Projeto;
 import dev.evilasio.desafio_orla.model.form.CriarProjetoForm;
@@ -39,11 +41,11 @@ public class ProjetoServiceImpl implements ProjetoService {
 
     private Funcionario getFuncionario(Long idFuncionario) {
         return funcionarioRepository.findById(idFuncionario).orElseThrow(
-                () -> new RuntimeException("Funcionario não encontrado para o id:" + idFuncionario.toString()));
+                () -> new StandardException("FUNCIONARIO_NOT_FOUND","Funcionario não encontrado para o id:" + idFuncionario.toString(),HttpStatus.BAD_REQUEST));
     }
 
     @Override
     public Projeto buscarProjeto(Long id) {
-        return projetoRepository.findById(id).orElseThrow(()->new RuntimeException("Projeto não encontrado"));
+        return projetoRepository.findById(id).orElseThrow(()->new StandardException("PROJETO_NOT_FOUND","Projeto não encontrado",HttpStatus.BAD_REQUEST));
     }
 }
