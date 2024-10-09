@@ -8,5 +8,3 @@ services:
       POSTGRES_DB : desafio
       POSTGRES_USERNAME : postgres
       POSTGRES_PASSWORD : 123
-
-  # backend:
