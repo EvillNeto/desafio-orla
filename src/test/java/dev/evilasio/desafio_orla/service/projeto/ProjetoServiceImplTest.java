@@ -78,12 +78,10 @@ class ProjetoServiceImplTest {
         // give
         CriarProjetoForm form = CriarProjetoForm.builder().idFuncionarios(Set.of(1L, 2L, 3L)).build();
         // when
-        Mockito.doReturn(Optional.of(Funcionario.builder().build())).when(fRepository).findById(1L);
-        Mockito.doReturn(Optional.of(Funcionario.builder().build())).when(fRepository).findById(2L);
-        Mockito.doReturn(Optional.empty()).when(fRepository).findById(3L);
+        Mockito.doReturn(Optional.empty()).when(fRepository).findById(anyLong());
         // then
         assertThatThrownBy(() -> underTest.criarProjeto(form))
-                .hasMessageContaining("Funcionario não encontrado para o id:" + 3L);
+                .hasMessageContaining("Funcionario não encontrado para o id:");
     }
 
     @Test

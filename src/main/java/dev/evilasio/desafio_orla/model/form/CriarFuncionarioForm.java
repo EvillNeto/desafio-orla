@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import org.hibernate.validator.constraints.br.CPF;
 
 import dev.evilasio.desafio_orla.model.entity.Funcionario;
-import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Builder
 @Getter
 @Setter
@@ -37,12 +35,12 @@ public class CriarFuncionarioForm {
     @NotNull
     private BigDecimal salario;
 
-    public Funcionario toEntity(){
+    public Funcionario toEntity() {
         return Funcionario.builder()
-        .nome(this.nome)
-        .cpf(this.cpf)
-        .email(this.email)
-        .salario(this.salario)
-        .build();
+                .nome(this.nome)
+                .cpf(this.cpf)
+                .email(this.email)
+                .salario(this.salario)
+                .build();
     }
 }
