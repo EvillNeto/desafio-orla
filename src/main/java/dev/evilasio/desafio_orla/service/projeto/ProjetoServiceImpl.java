@@ -39,7 +39,7 @@ public class ProjetoServiceImpl implements ProjetoService {
 
     private Funcionario getFuncionario(Long idFuncionario) {
         return funcionarioRepository.findById(idFuncionario).orElseThrow(
-                () -> new RuntimeException("Funcionario de id:" + idFuncionario.toString() + " não encontrado"));
+                () -> new RuntimeException("Funcionario não encontrado para o id:" + idFuncionario.toString()));
     }
 
     @Override
